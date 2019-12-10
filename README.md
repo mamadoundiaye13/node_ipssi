@@ -5,7 +5,7 @@
 
 ## Launch docker
 ```
-dc up
+docker-compose up
 ```
 
 ## Access to docker
