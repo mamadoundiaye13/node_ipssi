@@ -83,7 +83,7 @@ exports.delete_a_post = (req, res) => {
         }
         else {
             res.status(200);
-            res.json('Post bien supprimé');
+            res.json({message: 'Post bien supprimé'});
         }
     });
 };
