@@ -12,3 +12,7 @@ docker-compose up
 ```
 docker exec -ti project_node bash
 ```
+## Install the dependencies
+```
+npm install
+```
