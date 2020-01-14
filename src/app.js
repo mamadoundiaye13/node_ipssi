@@ -1,13 +1,26 @@
-const http = require('http');
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+
+const app = express();
 
 const hostname = '0.0.0.0';
 const port = 3000;
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
-});
+// Options pour enlever les warnings
+const mongooseParams = {
+  useUnifiedTopology : true,
+  useNewUrlParser: true,
+  useCreateIndex: true,
+};
 
-server.listen(port, hostname);
+mongoose.connect('mongodb://mongo/sqynode', mongooseParams);
 
+// parse various different custom JSON types as JSON
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json({ type: 'application/*+json' }));
+
+const postRoutes = require('./api/routes/postRoutes');
+postRoutes(app);
+
+app.listen(port, hostname);
