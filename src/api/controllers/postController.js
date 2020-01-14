@@ -49,6 +49,7 @@ exports.get_a_post = (req, res) => {
 };
 
 exports.update_a_post = (req, res) => {
+    // On pouvait utiliser aussi findByIdAndUpdate(req.params.id, req.body, {new:true}, (error, post))
     Post.findById(req.params.id, function(error, post) {
         if (error){
             res.status(500);
@@ -82,7 +83,7 @@ exports.delete_a_post = (req, res) => {
         }
         else {
             res.status(200);
-            res.json('Post bien supprimé');
+            res.json({message: 'Post bien supprimé'});
         }
     });
 };
