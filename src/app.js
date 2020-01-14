@@ -20,6 +20,8 @@ mongoose.connect('mongodb://mongo/sqynode', mongooseParams);
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json({ type: 'application/*+json' }));
 
+app.use(express.static('public'));
+
 const postRoutes = require('./api/routes/postRoutes');
 postRoutes(app);
 
